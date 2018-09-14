@@ -1,17 +1,7 @@
-FROM microsoft/aspnetcore-build AS builder
-WORKDIR /source
+FROM  microsoft/dotnet:2.1-aspnetcore-runtime
 
-# caches restore result by copying csproj file separately
-COPY ./Hangfire.Job/Hangfire.Job.csproj .
-RUN dotnet restore
+COPY ./Hangfire.Job/bin/Debug/netcoreapp2.1 .
 
-# copies the rest of your code
-COPY ./Hangfire.Job .
-RUN dotnet publish --output /app/ --configuration Release
+RUN chmod 777 Hangfire.Job.dll
 
-# Stage 2
-FROM microsoft/aspnetcore
-WORKDIR /app
-COPY --from=builder /app .
-EXPOSE 88
 ENTRYPOINT ["dotnet", "Hangfire.Job.dll"]
