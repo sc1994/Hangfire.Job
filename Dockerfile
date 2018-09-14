@@ -1,6 +1,6 @@
 FROM  microsoft/dotnet:2.1-aspnetcore-runtime
 
-COPY Hangfire.Job/Hangfire.Job .
+COPY ./Hangfire.Job/Hangfire.Job .
 
 RUN dotnet publish -c Release -o .
 
