@@ -1,6 +1,5 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-EXPOSE 88
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
@@ -16,4 +15,5 @@ RUN dotnet publish "Hangfire.Job.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+EXPOSE 88
 ENTRYPOINT ["dotnet", "Hangfire.Job.dll"]
