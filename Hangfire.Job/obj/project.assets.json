@@ -12642,23 +12642,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\孙诚\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Hangfire.Job\\Hangfire.Job\\Hangfire.Job.csproj",
+      "projectUniqueName": "C:\\Users\\孙诚\\go\\src\\Hangfire.Job\\Hangfire.Job\\Hangfire.Job.csproj",
       "projectName": "Hangfire.Job",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\Hangfire.Job\\Hangfire.Job\\Hangfire.Job.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\Hangfire.Job\\Hangfire.Job\\obj\\",
+      "projectPath": "C:\\Users\\孙诚\\go\\src\\Hangfire.Job\\Hangfire.Job\\Hangfire.Job.csproj",
+      "packagesPath": "C:\\Users\\孙诚\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\孙诚\\go\\src\\Hangfire.Job\\Hangfire.Job\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\孙诚\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12666,7 +12666,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://api.nuget.17usoft.com/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
