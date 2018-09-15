@@ -15,4 +15,6 @@ RUN dotnet publish "Hangfire.Job.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+RUN rm -rf es
+RUN rm -rf zh-TW
 ENTRYPOINT ["dotnet", "Hangfire.Job.dll"]
