@@ -1,4 +1,6 @@
 using Flurl.Http;
+using Hangfire.Annotations;
+using Hangfire.Dashboard;
 using Hangfire.Redis;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +39,10 @@ namespace Hangfire.Job
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+            {
+                Authorization = new[] { new CustomAuthorizeFilter() }
+            });
             app.UseHangfireServer();
 
             // /addjob?name=test1&method=get&url=https%3a%2f%2fwww.baidu.com%2f&assert=html&cron=1 1 1 * *
@@ -136,6 +141,16 @@ msg   : {msg}
 ========================END==========================";
 
             File.AppendAllLines(path, new List<string> { content });
+        }
+    }
+
+    public class CustomAuthorizeFilter : IDashboardAuthorizationFilter
+    {
+        public bool Authorize([NotNull] DashboardContext context)
+        {
+            //var httpcontext = context.GetHttpContext();
+            //return httpcontext.User.Identity.IsAuthenticated;
+            return true;
         }
     }
 }
