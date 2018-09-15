@@ -10,15 +10,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Hangfire.Job
 {
-  public class Program
-  {
-    public static void Main(string[] args)
+    public class Program
     {
-      CreateWebHostBuilder(args).UseUrls("http://0.0.0.0:5000").Build().Run();
-    }
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).UseUrls("http://0.0.0.0:5001").Build().Run();
+        }
 
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>();
-  }
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
 }
