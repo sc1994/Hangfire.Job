@@ -57,15 +57,15 @@ namespace Hangfire.Job
                 var cron = c.Request.Query["cron"].ToString();
                 if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(method) || string.IsNullOrWhiteSpace(name))
                 {
-                    return c.Response.WriteAsync("≤Œ ˝¥ÌŒÛ");
+                    return c.Response.WriteAsync("param error");
                 }
                 if (string.IsNullOrWhiteSpace(body) && method == "POST")
                 {
-                    return c.Response.WriteAsync("method¥ÌŒÛ");
+                    return c.Response.WriteAsync("method error");
                 }
                 if (!new[] { "POST", "GET" }.Contains(method))
                 {
-                    return c.Response.WriteAsync("method¥ÌŒÛ");
+                    return c.Response.WriteAsync("method error");
                 }
                 var job = Common.Job.FromExpression<Jobs>(j => j.Send(name, url, method, body, assert));
                 var manager = new RecurringJobManager(JobStorage.Current);
@@ -75,7 +75,7 @@ namespace Hangfire.Job
                 }
                 catch (Exception ex)
                 {
-                    return c.Response.WriteAsync($"          “Ï≥££∫{ ex.Message}\r\n          ∂—’ª£∫{ ex.StackTrace}");
+                    return c.Response.WriteAsync($"          error£∫{ ex.Message}\r\n          stack£∫{ ex.StackTrace}");
                 }
                 return c.Response.WriteAsync("ok");
             }));
@@ -89,12 +89,12 @@ namespace Hangfire.Job
         {
             if (string.IsNullOrWhiteSpace(url) || string.IsNullOrWhiteSpace(method))
             {
-                new LogHelper().Write("warn", "≤Œ ˝¥ÌŒÛ");
+                new LogHelper().Write("warn", "param error");
                 return;
             }
             if (string.IsNullOrWhiteSpace(body) && method == "POST")
             {
-                new LogHelper().Write("warn", "method¥ÌŒÛ");
+                new LogHelper().Write("warn", "method error");
                 return;
             }
 
@@ -118,12 +118,12 @@ namespace Hangfire.Job
                     new LogHelper().Write("ok", result);
                     return;
                 }
-                new LogHelper().Write("error", $"assert£∫{assert}“Ï≥££∫{result}");
-                throw new Exception($"assert£∫{assert}“Ï≥££∫{result}");
+                new LogHelper().Write("error", $"assert£∫{assert}error£∫{result}");
+                throw new Exception($"assert£∫{assert}error£∫{result}");
             }
             catch (Exception ex)
             {
-                new LogHelper().Write("error", $"url£∫{assert}£¨body£∫{body}\r\n          “Ï≥££∫{ex.Message}\r\n          ∂—’ª£∫{ex.StackTrace}");
+                new LogHelper().Write("error", $"url£∫{assert}£¨body£∫{body}\r\n          error£∫{ex.Message}\r\n          stack£∫{ex.StackTrace}");
                 throw;
             }
 
