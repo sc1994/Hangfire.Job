@@ -119,10 +119,12 @@ namespace Hangfire.Job
                     return;
                 }
                 new LogHelper().Write("error", $"assert£∫{assert}“Ï≥££∫{result}");
+                throw new Exception($"assert£∫{assert}“Ï≥££∫{result}");
             }
             catch (Exception ex)
             {
                 new LogHelper().Write("error", $"url£∫{assert}£¨body£∫{body}\r\n          “Ï≥££∫{ex.Message}\r\n          ∂—’ª£∫{ex.StackTrace}");
+                throw;
             }
 
         }
