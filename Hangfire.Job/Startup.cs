@@ -75,7 +75,7 @@ namespace Hangfire.Job
                 }
                 catch (Exception ex)
                 {
-                    return c.Response.WriteAsync($"          error£º{ ex.Message}\r\n          stack£º{ ex.StackTrace}");
+                    return c.Response.WriteAsync($"          error -->{ ex.Message}\r\n          stack -->{ ex.StackTrace}");
                 }
                 return c.Response.WriteAsync("ok");
             }));
@@ -118,12 +118,12 @@ namespace Hangfire.Job
                     new LogHelper().Write("ok", result);
                     return;
                 }
-                new LogHelper().Write("error", $"assert£º{assert}error£º{result}");
-                throw new Exception($"assert£º{assert}error£º{result}");
+                new LogHelper().Write("error", $"assert -->{assert}\r\n          error -->{result}");
+                throw new Exception($"assert -->{assert}\r\n          error -->{result}");
             }
             catch (Exception ex)
             {
-                new LogHelper().Write("error", $"url£º{assert}£¬body£º{body}\r\n          error£º{ex.Message}\r\n          stack£º{ex.StackTrace}");
+                new LogHelper().Write("error", $"url -->{assert}\r\n          body -->{body}\r\n          error -->{ex.Message}\r\n          stack -->{ex.StackTrace}");
                 throw;
             }
 
